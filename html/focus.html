@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focus Mode — StudyCloud</title>
+    <meta name="description" content="A quiet page for distraction-free planning, writing, and reflection." />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="focus-body">
+    <a class="skip-link" href="#focus">Skip to editor</a>
+
+    <!-- Header -->
+    <header class="site-header focus-header" role="banner">
+        <div class="container header-inner">
+            <a class="brand" href="../index.html" aria-label="Back to StudyCloud">
+                <span class="brand-mark" aria-hidden="true">☁️</span>
+                <span class="brand-name">Study<span class="accent">Cloud</span></span>
+            </a>
+        </div>
+
+        <button class="menu-btn" aria-label="Open menu">☰ Menu</button>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <aside class="sidebar">
+        <h2 class="sidebar-title">Study Tools</h2>
+        <ul class="sidebar-list">
+            <li><a href="../index.html#planner">Weekly Planner</a></li>
+            <li><a href="../index.html#template">Study Session Template</a></li>
+            <li><a href="../index.html#reflect">Daily Reflection</a></li>
+            <li><a href="../index.html#tips">Quick Tips</a></li>
+            <li><a href="../index.html">Back Home</a></li>
+        </ul>
+    </aside>
+
+    <!-- Focus Writing Area -->
+    <main id="focus" class="focus-main" tabindex="-1" aria-label="Focus writing area">
+        <div class="focus-wrap">
+            <h1 class="focus-title">Deep Focus</h1>
+            <p class="focus-sub">No hype. No noise. Show up and write your plan with honesty.</p>
+
+            <textarea class="focus-area" rows="20" placeholder="Session Goal (1 sentence)
+— First action (start small)
+— Steps (2–4 bullets)
+— Done when (define proof)"></textarea>
+
+            <p class="focus-tip">Ritual: breathe in 4, hold 2, out 6. Start the first action. Momentum follows.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer focus-footer" role="contentinfo">
+        <div class="container footer-inner">
+            <p>Back to <a href="../index.html">StudyCloud</a></p>
+        </div>
+    </footer>
+</body>
+</html>
