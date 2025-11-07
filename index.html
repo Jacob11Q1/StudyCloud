@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,7 +43,21 @@
         rel="stylesheet" />
 
     <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- JSON-LD (basic) -->
+    <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"StudyCloud",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"Web",
+    "url":"https://your-domain.com/",
+    "description":"Plan your week, enter focus mode, and reflect. Discipline without noise."
+  }
+  </script>
 </head>
+
 <body>
     <!-- Skip link -->
     <a class="skip-link" href="#main">Skip to content</a>
@@ -63,7 +78,7 @@
                     <li><a href="#template">Session Template</a></li>
                     <li><a href="#reflect">Study Log</a></li>
                     <li><a href="#tips">Quick Tips</a></li>
-                    <li><a href="./html/focus.html">Focus Mode</a></li>
+                    <li><a href="./html/focus.html">Focus Chamber</a></li>
                 </ul>
             </nav>
         </div>
@@ -74,19 +89,20 @@
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="container hero-inner">
             <h1 id="hero-title" class="hero-title">
-                You’ve restarted before. This time, we do it differently—one focused session at a time.
+                You don’t need motivation. You need a vow.
             </h1>
-            <p class="hero-sub">
-                StudyCloud is a quiet system for students who want discipline without the noise: choose a method, plan
-                the week, enter focus, then review honestly.
+            <p class="hero-sub hero-oath">
+                Show up, work clean, stop on time. One session becomes two, two becomes a streak,
+                and streaks turn into standards. This is how you outgrow your old self.
             </p>
             <div class="hero-cta">
-                <a class="btn btn-primary" href="#planner">Begin Your Week</a>
-                <a class="btn btn-ghost" href="./html/focus.html">Enter Focus Mode</a>
+                <a class="btn btn-primary" href="#planner">Begin the Work</a>
+                <a class="btn btn-ghost" href="./html/focus.html">Enter Focus Chamber</a>
             </div>
         </div>
         <div class="wave" aria-hidden="true"></div>
     </section>
+
 
     <main id="main" tabindex="-1">
         <!-- Why -->
@@ -161,6 +177,15 @@
                 <p class="section-sub">Keep blocks 60–120 minutes. Under-schedule by 20%. Show up even when it’s not
                     perfect.</p>
 
+                <!-- Controls -->
+                <div class="session-actions" style="justify-content:center;margin-bottom:14px;">
+                    <button class="btn btn-primary" id="planner-export" type="button">Export Week</button>
+                    <label class="btn btn-ghost" for="planner-import-input" style="cursor:pointer;">Import Week</label>
+                    <input id="planner-import-input" type="file" accept="application/json" style="display:none" />
+                    <button class="btn btn-ghost" id="planner-clear" type="button"
+                        aria-label="Clear planner">Clear</button>
+                </div>
+
                 <div class="planner" role="table" aria-label="Weekly planner">
                     <div class="planner-head" role="columnheader">Mon</div>
                     <div class="planner-head" role="columnheader">Tue</div>
@@ -170,22 +195,23 @@
                     <div class="planner-head" role="columnheader">Sat</div>
                     <div class="planner-head" role="columnheader">Sun</div>
 
-                    <!-- Example rows -->
-                    <div class="planner-cell" role="cell">Math: Problem sets</div>
-                    <div class="planner-cell" role="cell">History: Notes → flashcards</div>
-                    <div class="planner-cell" role="cell">Physics: Concept map</div>
-                    <div class="planner-cell" role="cell">Chem: Practice Qs</div>
-                    <div class="planner-cell" role="cell">English: Outline essay</div>
-                    <div class="planner-cell" role="cell">Free</div>
-                    <div class="planner-cell" role="cell">Family / Recharge</div>
+                    <!-- Example rows (now editable + keyed) -->
+                    <div class="planner-cell" role="cell" contenteditable data-day="mon-1">Math: Problem sets</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="tue-1">History: Notes → flashcards
+                    </div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="wed-1">Physics: Concept map</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="thu-1">Chem: Practice Qs</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="fri-1">English: Outline essay</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="sat-1">Free</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="sun-1">Family / Recharge</div>
 
-                    <div class="planner-cell" role="cell">Bio: Recall diagrams</div>
-                    <div class="planner-cell" role="cell">Math: Past paper</div>
-                    <div class="planner-cell" role="cell">CS: Implement practice</div>
-                    <div class="planner-cell" role="cell">Chem: Lab review</div>
-                    <div class="planner-cell" role="cell">History: Timeline</div>
-                    <div class="planner-cell" role="cell">Free</div>
-                    <div class="planner-cell" role="cell">Plan next week</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="mon-2">Bio: Recall diagrams</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="tue-2">Math: Past paper</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="wed-2">CS: Implement practice</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="thu-2">Chem: Lab review</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="fri-2">History: Timeline</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="sat-2">Free</div>
+                    <div class="planner-cell" role="cell" contenteditable data-day="sun-2">Plan next week</div>
                 </div>
 
                 <p class="planner-note">Tip: finish each block with a 3-line summary. That’s how you retain.</p>
@@ -199,16 +225,17 @@
                 <h2 class="section-title">Lock the plan before you start</h2>
                 <p class="section-sub">Define success upfront. Future JS will save this.</p>
 
-                <form class="session" aria-label="Study session template">
+                <form class="session" aria-label="Study session template" id="session-form">
                     <div class="session-grid">
                         <label class="field">
                             <span class="label">Subject</span>
-                            <input class="input" type="text" placeholder="e.g., Physics — Kinematics" />
+                            <input class="input" id="session-subject" type="text"
+                                placeholder="e.g., Physics — Kinematics" />
                         </label>
 
                         <label class="field">
                             <span class="label">Method</span>
-                            <select class="input">
+                            <select class="input" id="session-method">
                                 <option>Pomodoro (25/5)</option>
                                 <option>Deep Work (50/10)</option>
                                 <option>Active Recall</option>
@@ -219,17 +246,19 @@
 
                         <label class="field">
                             <span class="label">Duration</span>
-                            <input class="input" type="text" placeholder="e.g., 90 minutes" />
+                            <input class="input" id="session-duration" type="text" placeholder="e.g., 90 minutes" />
                         </label>
 
                         <label class="field span-2">
                             <span class="label">Goal (1 sentence)</span>
-                            <input class="input" type="text" placeholder="Define success for this session…" />
+                            <input class="input" id="session-goal" type="text"
+                                placeholder="Define success for this session…" />
                         </label>
                     </div>
 
                     <div class="session-actions">
-                        <a class="btn btn-primary" href="#reflect">Mark After Session</a>
+                        <button class="btn btn-primary" id="session-save" type="button">Save Template</button>
+                        <a class="btn btn-ghost" href="./html/focus.html" id="session-start">Start in Focus</a>
                         <a class="btn btn-ghost" href="#planner">Back to Planner</a>
                     </div>
                 </form>
@@ -242,27 +271,34 @@
                 <h2 class="section-title">Close the loop — Study Log</h2>
                 <p class="section-sub">No self-hate. Just honest review. We learn, we adjust, we return tomorrow.</p>
 
-                <form class="reflect" aria-label="Daily reflection">
+                <div class="session-actions" style="justify-content:center;margin-bottom:10px">
+                    <div id="streak-badges" aria-live="polite" style="font-weight:700;"></div>
+                </div>
+
+                <form class="reflect" aria-label="Daily reflection" id="reflect-form">
                     <div class="reflect-grid">
                         <label class="field">
                             <span class="label">Today’s Wins (3 lines max)</span>
-                            <textarea class="input input-area" rows="3" placeholder="1) …&#10;2) …&#10;3) …"></textarea>
+                            <textarea class="input input-area" id="wins" rows="3"
+                                placeholder="1) …&#10;2) …&#10;3) …"></textarea>
                         </label>
 
                         <label class="field">
                             <span class="label">What was hard?</span>
-                            <textarea class="input input-area" rows="3"
+                            <textarea class="input input-area" id="hard" rows="3"
                                 placeholder="Where did focus slip? Why?"></textarea>
                         </label>
 
                         <label class="field span-2">
                             <span class="label">Tomorrow’s Priority</span>
-                            <input class="input" type="text" placeholder="The one thing that makes tomorrow a win" />
+                            <input class="input" id="priority" type="text"
+                                placeholder="The one thing that makes tomorrow a win" />
                         </label>
                     </div>
 
                     <div class="session-actions">
-                        <a class="btn btn-primary" href="#tips">See Quick Tips</a>
+                        <button class="btn btn-primary" type="submit">Save Reflection</button>
+                        <button class="btn btn-ghost" id="reflect-export" type="button">Export Log</button>
                         <a class="btn btn-ghost" href="#hero-title">Back to Top</a>
                     </div>
                 </form>
@@ -298,5 +334,13 @@
             </ul>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="./js/app.js" defer></script>
+    <script src="./js/planner.js" defer></script>
+    <script src="./js/session.js" defer></script>
+    <script src="./js/reflect.js" defer></script>
+
 </body>
+
 </html>

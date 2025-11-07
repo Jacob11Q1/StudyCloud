@@ -24,31 +24,49 @@
             </a>
         </div>
 
-        <button class="menu-btn" aria-label="Open menu">☰ Menu</button>
+        <button class="menu-btn" aria-label="Open menu" id="menu-toggle">☰ Menu</button>
     </header>
 
     <!-- Sidebar Menu -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
         <h2 class="sidebar-title">Study Tools</h2>
         <ul class="sidebar-list">
             <li><a href="../index.html#planner">Weekly Planner</a></li>
-            <li><a href="../index.html#template">Study Session Template</a></li>
+            <li><a href="../index.html#template">Study Template</a></li>
             <li><a href="../index.html#reflect">Daily Reflection</a></li>
             <li><a href="../index.html#tips">Quick Tips</a></li>
             <li><a href="../index.html">Back Home</a></li>
         </ul>
     </aside>
 
-    <!-- Focus Writing Area -->
+    <!-- Focus Writing + Timer -->
     <main id="focus" class="focus-main" tabindex="-1" aria-label="Focus writing area">
         <div class="focus-wrap">
-            <h1 class="focus-title">Deep Focus</h1>
-            <p class="focus-sub">No hype. No noise. Show up and write your plan with honesty.</p>
+            <h1 class="focus-title" id="focus-title">Deep Focus</h1>
+            <p class="focus-sub" id="focus-sub">No hype. No noise. Show up and write your plan with honesty.</p>
 
-            <textarea class="focus-area" rows="20" placeholder="Session Goal (1 sentence)
+            <textarea class="focus-area" id="focus-area" rows="20" placeholder="Session Goal (1 sentence)
 — First action (start small)
 — Steps (2–4 bullets)
 — Done when (define proof)"></textarea>
+
+            <div class="session-actions" style="justify-content:space-between;margin-top:14px">
+                <div>
+                    <select class="input" id="timer-preset" aria-label="Preset">
+                        <option value="25-5-4">Pomodoro 25/5 ×4</option>
+                        <option value="50-10-3">Deep Work 50/10 ×3</option>
+                        <option value="15-3-6">Micro 15/3 ×6</option>
+                    </select>
+                    <button class="btn btn-primary" id="timer-start" type="button">Start</button>
+                    <button class="btn btn-ghost" id="timer-pause" type="button">Pause</button>
+                    <button class="btn btn-ghost" id="timer-reset" type="button">Reset</button>
+                </div>
+                <div style="font-weight:800" aria-live="polite">
+                    <span id="timer-phase">work</span> —
+                    <span id="timer-remaining">25:00</span> —
+                    R <span id="timer-round">1</span>
+                </div>
+            </div>
 
             <p class="focus-tip">Ritual: breathe in 4, hold 2, out 6. Start the first action. Momentum follows.</p>
         </div>
@@ -59,5 +77,10 @@
             <p>Back to <a href="../index.html">StudyCloud</a></p>
         </div>
     </footer>
+
+    <script src="../js/app.js" defer></script>
+    <script src="../js/focus.js" defer></script>
+    <script src="../js/timer.js" type="module"></script>
+
 </body>
 </html>
